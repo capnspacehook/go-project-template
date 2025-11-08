@@ -6,12 +6,20 @@ on:
       - master
     paths:
       - "**Dockerfile*"
+      - ".dockerignore"
+      - "**.go"
+      - "go.mod"
+      - "go.sum"
       - ".github/workflows/lint-docker.yml"
   pull_request:
     branches:
       - "*"
     paths:
       - "**Dockerfile*"
+      - ".dockerignore"
+      - "**.go"
+      - "go.mod"
+      - "go.sum"
       - ".github/workflows/lint-docker.yml"
 
   workflow_dispatch: {}
