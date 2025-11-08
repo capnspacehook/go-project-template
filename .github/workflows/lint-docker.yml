@@ -1,21 +1,23 @@
-name: Lint Dockerfile
+name: Lint Dockerfiles
 
 on:
   push:
     branches:
       - master
     paths:
-      - Dockerfile
+      - "**Dockerfile*"
+      - ".github/workflows/lint-docker.yml"
   pull_request:
     branches:
       - "*"
     paths:
-      - Dockerfile
+      - "**Dockerfile*"
+      - ".github/workflows/lint-docker.yml"
 
   workflow_dispatch: {}
 
 jobs:
-  lint-dockerfile:
+  lint-dockerfiles:
     permissions:
       contents: read
     uses: capnspacehook/go-workflows/.github/workflows/lint-docker.yml@master
