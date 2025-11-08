@@ -9,17 +9,22 @@ pull requests when new versions are released.
 
 Multiple workflows are configured that will:
 
-- Lint Go code
+- Lint Go code with [`golangci-lint`](https://golangci-lint.run/) and [`staticcheck`](https://staticcheck.io/)
 - Check that `go.mod` is tidied
+- Test Go code and run all fuzz tests
 - Check that generated files are up to date
-- Test Go code and fuzz for 10 minutes
-- Lint the Dockerfile with [hadolint](https://github.com/hadolint/hadolint)
-- Lint workflow files with [actionlint](https://github.com/rhysd/actionlint)
-- Build, publish and sign Docker images with [cosign](https://github.com/sigstore/cosign)
-- Build, sign, publish binaries and create releases with [goreleaser](https://github.com/goreleaser/goreleaser) and [cosign](https://github.com/sigstore/cosign)
+- Scan for vulnerabilities with [`govulncheck`](https://pkg.go.dev/golang.org/x/vuln/cmd/govulncheck)
+- Build, sign, publish binaries and create releases with [`goreleaser`](https://github.com/goreleaser/goreleaser) and [`cosign`](https://github.com/sigstore/cosign)
+- Open pull requests to update the Go version in `go.mod` to the latest stable version
+- Lint Dockerfiles with [`hadolint`](https://github.com/hadolint/hadolint)
+- Build, publish and sign Docker images with [`cosign`](https://github.com/sigstore/cosign)
+- Lint workflow files with [`actionlint`](https://github.com/rhysd/actionlint)
+- Run Github CodeQL on Go code
 
 Almost all workflows will trigger when appropriate files are modified from pushes or pull requests. 
 Binaries will only be released when a semver compatible tag is pushed however.
+
+For more details on the workflows see the https://github.com/capnspacehook/go-workflows.
 
 ## Usage
 
